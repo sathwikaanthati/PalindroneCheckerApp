@@ -1,4 +1,5 @@
 # PalindroneCheckerApp
+
 // running procedure
 1. Clone the repository
 2. Switch to the required branch (main / welcome-page)
@@ -28,4 +29,4 @@
 - Checking words like "madam", "racecar"
 - Checking sentences with spaces
 - Learning beginner-level project structure
-- Demonstrating Git workflow with multiple branches  
+- Demonstrating Git workflow with multiple branche
