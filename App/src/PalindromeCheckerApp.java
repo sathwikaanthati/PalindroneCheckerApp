@@ -1,25 +1,37 @@
-public class PalindromeCheckerAp {
 
-    public static void main(String[] args) {
-
-        public class UseCase2PalindromeCheckerApp {
+import java.util.Scanner;
+#usecase4
+        public class PalindromeCheckerApp {
 
             public static void main(String[] args) {
 
-                String input = "madam";
+                String input = "radar";
+
+                // Convert the string into a character array
+                char[] chars = input.toCharArray();
+
+                // Initialize pointer at the beginning
+                int start = 0;
+
+                // Initialize pointer at the end
+                int end = chars.length - 1;
+
+                // Assume palindrome initially
                 boolean isPalindrome = true;
 
-                // Loop only till half of the string length
-                for (int i = 0; i < input.length() / 2; i++) {
-                    if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+                // Continue comparison until pointers cross
+                while (start < end) {
+
+                    if (chars[start] != chars[end]) {
                         isPalindrome = false;
                         break;
                     }
+
+                    start++;
+                    end--;
                 }
 
-                System.out.println("Input text: " + input);
-                System.out.println("Is it a Palindrome? : " + isPalindrome);
+                System.out.println("Input : " + input);
+                System.out.println("Is Palindrome? : " + isPalindrome);
             }
         }
-    }
-}
