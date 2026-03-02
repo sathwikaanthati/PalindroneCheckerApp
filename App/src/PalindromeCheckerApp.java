@@ -1,37 +1,35 @@
 
-import java.util.Scanner;
-#usecase4
+import java.util.Stack;
+//usecase5
         public class PalindromeCheckerApp {
 
             public static void main(String[] args) {
 
-                String input = "radar";
 
-                // Convert the string into a character array
-                char[] chars = input.toCharArray();
+                        // Declare and initialize the input string
+                        String input = "noon";
 
-                // Initialize pointer at the beginning
-                int start = 0;
+                        // Create a Stack to store characters
+                        Stack<Character> stack = new Stack<>();
 
-                // Initialize pointer at the end
-                int end = chars.length - 1;
+                        // Push characters into stack
+                        for (char c : input.toCharArray()) {
+                            stack.push(c);
+                        }
 
-                // Assume palindrome initially
-                boolean isPalindrome = true;
+                        // Assume palindrome initially
+                        boolean isPalindrome = true;
 
-                // Continue comparison until pointers cross
-                while (start < end) {
+                        // Pop and compare
+                        for (char c : input.toCharArray()) {
+                            if (c != stack.pop()) {
+                                isPalindrome = false;
+                                break;
+                            }
+                        }
 
-                    if (chars[start] != chars[end]) {
-                        isPalindrome = false;
-                        break;
+                        // Print output in required format
+                        System.out.println("Input : " + input);
+                        System.out.println("Is Palindrome? : " + isPalindrome);
                     }
-
-                    start++;
-                    end--;
                 }
-
-                System.out.println("Input : " + input);
-                System.out.println("Is Palindrome? : " + isPalindrome);
-            }
-        }
