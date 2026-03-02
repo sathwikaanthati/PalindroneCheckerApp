@@ -1,35 +1,49 @@
 
 import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
 //usecase5
         public class PalindromeCheckerApp {
 
             public static void main(String[] args) {
 
+                Scanner sc = new Scanner(System.in);
 
-                        // Declare and initialize the input string
-                        String input = "noon";
+                // Read input from user
+                System.out.print("Input: ");
+                String input = sc.nextLine();
 
-                        // Create a Stack to store characters
-                        Stack<Character> stack = new Stack<>();
+                // Convert to lowercase (optional, for case-insensitive check)
+                input = input.toLowerCase();
 
-                        // Push characters into stack
-                        for (char c : input.toCharArray()) {
-                            stack.push(c);
-                        }
+                // Create Queue (FIFO)
+                Queue<Character> queue = new LinkedList<>();
 
-                        // Assume palindrome initially
-                        boolean isPalindrome = true;
+                // Create Stack (LIFO)
+                Stack<Character> stack = new Stack<>();
 
-                        // Pop and compare
-                        for (char c : input.toCharArray()) {
-                            if (c != stack.pop()) {
-                                isPalindrome = false;
-                                break;
-                            }
-                        }
+                // Insert each character into queue and stack
+                for (char c : input.toCharArray()) {
+                    queue.add(c);      // Enqueue
+                    stack.push(c);     // Push
+                }
 
-                        // Print output in required format
-                        System.out.println("Input : " + input);
-                        System.out.println("Is Palindrome? : " + isPalindrome);
+                boolean isPalindrome = true;
+
+                // Compare dequeue (queue) and pop (stack)
+                while (!queue.isEmpty()) {
+                    if (queue.remove() != stack.pop()) {
+                        isPalindrome = false;
+                        break;
                     }
                 }
+
+                System.out.println("Is Palindrome? : " + isPalindrome);
+
+                sc.close();
+            }
+}
+
+
