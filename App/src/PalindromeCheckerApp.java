@@ -1,11 +1,9 @@
-
-
 import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC9.
+     * Application entry point for UC10.
      *
      * @param args Command-line arguments
      */
@@ -16,34 +14,28 @@ public class PalindromeCheckerApp {
         System.out.print("Input : ");
         String input = scanner.nextLine();
 
-        boolean result = check(input, 0, input.length() - 1);
+        // Normalize string:
+        // 1. Convert to lowercase
+        // 2. Remove all non-alphanumeric characters (spaces, symbols)
+        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
 
-        System.out.println("Is Palindrome? : " + result);
+        boolean isPalindrome = true;
+
+        // Compare characters from both ends
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            // Compare symmetric characters
+            if (normalized.charAt(i) !=
+                    normalized.charAt(normalized.length() - 1 - i)) {
+
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Is Palindrome? : " + isPalindrome);
 
         scanner.close();
     }
-
-    /**
-     * Recursively checks whether a string is palindrome.
-     *
-     * @param s     Input string
-     * @param start Starting index
-     * @param end   Ending index
-     * @return true if palindrome, otherwise false
-     */
-    private static boolean check(String s, int start, int end) {
-
-        // Base condition: If start crosses end, all characters matched
-        if (start >= end) {
-            return true;
-        }
-
-        // If characters do not match, not a palindrome
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
-
-        // Recursive call moving inward
-        return check(s, start + 1, end - 1);
-    }
 }
+
